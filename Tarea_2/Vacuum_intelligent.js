@@ -1,10 +1,10 @@
 var  recorrido= false;
-var states = ["B","Sucio","Sucio"];
+var states = ["B","DIRTY","DIRTY"];
 
 function reflex_agent(location, state){
-    if (state=="Sucio") return "Limpio";
-    else if (location=="A") return "Derecha";
-    else if (location=="B") return "Izquierda";
+    if (state=="DIRTY") return "CLEAN";
+    else if (location=="A") return "RIGTH";
+    else if (location=="B") return "LEFT";
 }
 
 function test(states){
@@ -12,21 +12,21 @@ function test(states){
        var state = states[0] == "A" ? states[1] : states[2];
        var action_result = reflex_agent(location, state);
        document.getElementById("algoritmo").innerHTML+="<br> Estado: ".concat(states[1]).concat("/").concat(states[2]).concat("<br>Lugar: ").concat(location).concat(" / Accion: ").concat(action_result);	
-       if(states[1]=="Limpio" && states[2]=="Limpio"){
+       if(states[1]=="CLEAN" && states[2]=="CLEAN"){
         if(recorrido){
             document.getElementById("algoritmo").innerHTML+="<br> <br> **Estados Recorridos** ";
             return;
         }else{ 
             recorrido=true;
-            states[1] = "Sucio";
-            states[2] = "Sucio";           
+            states[1] = "DIRTY";
+            states[2] = "DIRTY";           
         }
-    }else if(action_result == "Limpio"){
-         if (location == "A") states[1] = "Limpio";
-          else if (location == "B") states[2] = "Limpio";
+    }else if(action_result == "CLEAN"){
+         if (location == "A") states[1] = "CLEAN";
+          else if (location == "B") states[2] = "CLEAN";
        }
-       else if (action_result == "Derecha") states[0] = "B";
-       else if (action_result == "Izquierda") states[0] = "A";	
+       else if (action_result == "RIGTH") states[0] = "B";
+       else if (action_result == "LEFT") states[0] = "A";	
  setTimeout(function(){ test(states); }, 2000);
 }
 
