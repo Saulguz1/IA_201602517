@@ -1,7 +1,7 @@
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
+    results = regex.exec('http://luisespino.com/temp/games/reversi/index.php?turno=1&estado=2222222222222222222222222221022222201222222222222222222222222222');
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
@@ -22,7 +22,12 @@ function generar(turno,matriz){
     //elije posicion al azar
     var elije=   Math.floor(Math.random() * moves.length);
     console.log(elije)
-    return moves[elije];
+    //encontrar fila y columna
+    var fila = Math.trunc(moves[elije]/8)
+    var columna =(moves[elije]%8) 
+    console.log(fila,columna)
+    var coordenada = fila.toString() + columna.toString();
+    return coordenada;
 }
 function obtenerjugadasperm(matriz,turno){
     var jugadas = [];
