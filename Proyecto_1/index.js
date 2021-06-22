@@ -16,17 +16,7 @@ var matriz = Array.from(estadoac).map(Number);
 document.getElementById("algoritmo").textContent=generar(turnoac,matriz);
 
 function generar(turno,matriz){
-
-    if(estadoac == '2222222222222222222222222221022222201222222222222222222222222222' ){
-        if(turno == 1){
-            return 34;
-        
-        }else{
-            return 37;
-        }
-    }
     
-
     console.log(matriz)
     var moves = obtenerjugadasperm(matriz,turno)
     console.log(moves)
