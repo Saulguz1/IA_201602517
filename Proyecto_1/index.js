@@ -1,7 +1,7 @@
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec('http://luisespino.com/temp/games/reversi/index.php?turno=1&estado=2222222222222222222222222221022222201222222222222222222222222222');
+    results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
