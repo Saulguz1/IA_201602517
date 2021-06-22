@@ -95,6 +95,13 @@ function obterposiciones(matriz,turno){
     return posibles;
 }
 function verificarjugada(posi,matriz,turno){
+    var fichaenemiga ;
+    if(turno==1){
+        fichaenemiga = 0
+    }else{
+        fichaenemiga = 1
+    }
+
     var eslegal = [false,false,false,false,false,false,false,false]
     if( matriz[posi] != 2){
         return eslegal
@@ -106,7 +113,7 @@ function verificarjugada(posi,matriz,turno){
     var result = 0;
     if(columna >1){      
         while(cont < parseInt(columna)+1){
-            result = verifica(matriz[posi-cont],cont,turno);
+            result = verifica(matriz[posi-cont],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -123,7 +130,7 @@ function verificarjugada(posi,matriz,turno){
     if(columna < 6){
         cont = 1
         while(cont < 8-columna){
-            result = verifica(matriz[parseInt(posi)+cont],cont,turno);
+            result = verifica(matriz[parseInt(posi)+cont],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -140,7 +147,7 @@ function verificarjugada(posi,matriz,turno){
     if(fila >1){
         cont=1;
         while(cont < parseInt(fila)+1){
-            result = verifica(matriz[posi-cont*8],cont,turno);
+            result = verifica(matriz[posi-cont*8],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -157,7 +164,7 @@ function verificarjugada(posi,matriz,turno){
     if(fila < 6){
         cont = 1
         while(cont < 8-columna){
-            result = verifica(matriz[parseInt(posi)+cont*8],cont,turno);
+            result = verifica(matriz[parseInt(posi)+cont*8],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -174,7 +181,7 @@ function verificarjugada(posi,matriz,turno){
     var cont = 1;
     if(columna >1 && fila >1){
         while(cont < Math.min(columna,fila)+1){
-            result = verifica(matriz[posi-cont*9],cont,turno);
+            result = verifica(matriz[posi-cont*9],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -191,7 +198,7 @@ function verificarjugada(posi,matriz,turno){
     if(columna < 6 && fila >1){
         cont = 1
         while(cont < Math.min(Math.abs(columna-7),fila)+1){
-            result = verifica(matriz[parseInt(posi)-cont*7],cont,turno);
+            result = verifica(matriz[parseInt(posi)-cont*7],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -208,7 +215,7 @@ function verificarjugada(posi,matriz,turno){
     var cont = 1;
     if(columna >1 && fila < 6){
         while(cont < Math.min(columna,Math.abs(fila-7))+1){
-            result = verifica(matriz[parseInt(posi)+cont*7],cont,turno);
+            result = verifica(matriz[parseInt(posi)+cont*7],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
@@ -225,7 +232,7 @@ function verificarjugada(posi,matriz,turno){
     if(columna < 6 && fila <6){
         cont = 1
         while(cont <Math.min(Math.abs(columna-7),Math.abs(fila-7))+1){
-            result = verifica(matriz[parseInt(posi)+cont*9],cont,turno);
+            result = verifica(matriz[parseInt(posi)+cont*9],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
