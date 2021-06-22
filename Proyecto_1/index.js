@@ -23,8 +23,8 @@ function generar(turno,matriz){
     var elije=   Math.floor(Math.random() * moves.length);
     console.log(elije)
     //encontrar fila y columna
-    var fila = Math.trunc(moves[elije]/8)
-    var columna =(moves[elije]%8) 
+    var fila = Math.trunc(moves[elije]/8)-1
+    var columna =(moves[elije]%8) -1
     console.log(fila,columna)
     var coordenada = fila.toString() + columna.toString();
     return coordenada;
