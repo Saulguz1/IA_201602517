@@ -103,8 +103,7 @@ function verificarjugada(posi,matriz,turno){
     columna = posi%8;
     var cont = 1;
     var result = 0;
-    if(columna >1){
-        
+    if(columna >1){      
         while(cont < parseInt(columna)+1){
             result = verifica(matriz[posi-cont],cont,turno);
             if (result == 1){
@@ -146,6 +145,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[2] =true
+                console.log(eslegal[2], "c")
                 break;
             }else{
                 break;
@@ -162,6 +162,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[3] =true
+                console.log(eslegal[3], "d")
                 break;
             }else{
                 break;
@@ -178,6 +179,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[4] =true
+                console.log(eslegal[4], "e")
                 break;
             }else{
                 break;
@@ -194,6 +196,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result = 2){
                 eslegal[5] ==true
+                console.log(eslegal[5], "f")
                 break;
             }else{
                 break;
@@ -209,7 +212,8 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result = 2){
-                eslegal[4] ==true
+                eslegal[6] ==true
+                console.log(eslegal[6], "g")
                 break;
             }else{
                 break;
@@ -225,7 +229,8 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result == 2){
-                eslegal[5] =true
+                eslegal[7] =true
+                console.log(eslegal[7], "h")
                 break;
             }else{
                 break;
