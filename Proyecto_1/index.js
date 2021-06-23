@@ -21,8 +21,23 @@ function generar(turno,matriz){
     var moves = obtenerjugadasperm(matriz,turno)
     console.log(moves)
     //elije posicion al azar
-    var elije=   Math.floor(Math.random() * moves.length);
+    
+    var matrizheuris = [120,-20,20,5,5,20,-20,120,-20,-40,-5,-5,-5,-5,-40,-20,20,-5,15,3,3,15,-5,20,5,-5,3,3,3,3,-5,5,5,-5,3,3,3,3,-5,5,20,-5,15,3,3,15,-5,20,-20,-40,-5,-5,-5,-5,-40,-20,120,-20,20,5,5,20,-20,120];
+    var elije = 0;
+    var heuris = 0;
+    for(i = 0; i < moves.length; i++){
+        if (matrizheuris[moves[i]] > heuris)
+        {
+            heuris = matrizheuris[moves[i]];
+            elije = i;
+        }
+        
+    }
+    console.log("eligio",heuris)
     console.log(elije)
+
+
+
     //encontrar fila y columna
     var fila = Math.trunc(moves[elije]/8)
     var columna =(moves[elije]%8) 
@@ -30,30 +45,37 @@ function generar(turno,matriz){
     var coordenada = fila.toString() + columna.toString();
     return coordenada;
 }
+
 function obtenerjugadasperm(matriz,turno){
     var jugadas = [];
     var jugadasposibles = obterposiciones(matriz,turno);
     console.log(jugadasposibles)
     var posi = 0
+    var bandera = 0;
     while(posi < jugadasposibles.length){
         var posi2 = 0
         var verifica = verificarjugada(jugadasposibles[posi],matriz,turno)
         while(posi2 < verifica.length){
             if(verifica[posi2]==true){
                 jugadas.push(jugadasposibles[posi])
+                bandera=1;
             }
             posi2++;
         }
         posi++;
     }
+    if(bandera==0){
+        return jugadasposibles;
+    }
     return jugadas;
 }
+
 function obterposiciones(matriz,turno){
    var fila, columna = 0
    var jugadas = [].map(Number)
    //Agregar los espacios al rededor de la ficha de turno
     for ( var i in matriz.map(Number) ){
-        if(matriz[i] !=2 && matriz[i] == turno){
+        if(matriz[i] !=2){
             fila =  Math.trunc(i/8)
             columna = i%8;
             if(columna>0){
@@ -94,6 +116,7 @@ function obterposiciones(matriz,turno){
     
     return posibles;
 }
+
 function verificarjugada(posi,matriz,turno){
     var fichaenemiga ;
     if(turno==1){
@@ -119,7 +142,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[0] =true
-                console.log(eslegal[0], "a")
+                
                 break;
             }else{
                 break;
@@ -136,7 +159,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[1] =true
-                console.log(eslegal[1], "b")
+                
                 break;
             }else{
                 break;
@@ -153,7 +176,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[2] =true
-                console.log(eslegal[2], "c")
+                
                 break;
             }else{
                 break;
@@ -170,7 +193,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[3] =true
-                console.log(eslegal[3], "d")
+                
                 break;
             }else{
                 break;
@@ -187,7 +210,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[4] =true
-                console.log(eslegal[4], "e")
+                
                 break;
             }else{
                 break;
@@ -204,7 +227,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result = 2){
                 eslegal[5] ==true
-                console.log(eslegal[5], "f")
+                
                 break;
             }else{
                 break;
@@ -221,7 +244,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result = 2){
                 eslegal[6] ==true
-                console.log(eslegal[6], "g")
+                
                 break;
             }else{
                 break;
@@ -238,7 +261,7 @@ function verificarjugada(posi,matriz,turno){
                 continue;
             }else if (result == 2){
                 eslegal[7] =true
-                console.log(eslegal[7], "h")
+                
                 break;
             }else{
                 break;
@@ -249,6 +272,7 @@ function verificarjugada(posi,matriz,turno){
     return eslegal;
 
 }
+
 function verifica(espacio,cont,turno){
     if(espacio == turno){
         return 1;
