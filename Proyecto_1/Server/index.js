@@ -3,7 +3,7 @@ var app = express();
 const cors = require('cors');
 var corsOptions = { origin: true, optionsSuccessStatus: 200 };
 app.use(cors(corsOptions));
-var port = 2000;
+var port =  process.env.PORT || 3000;
 app.listen(port);
 console.log('Listening on port', port);
 
