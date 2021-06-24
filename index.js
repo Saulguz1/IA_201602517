@@ -136,6 +136,7 @@ function verificarjugada(posi,matriz,turno){
     columna = posi%8;
     var cont = 1;
     var result = 0;
+    //Horizontal izq
     if(columna >1){      
         while(cont < parseInt(columna)+1){
             result = verifica(matriz[posi-cont],cont,fichaenemiga);
@@ -152,6 +153,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Horizontal der
     if(columna < 6){
         cont = 1
         while(cont < 8-columna){
@@ -169,6 +171,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Vertical Arriba
     if(fila >1){
         cont=1;
         while(cont < parseInt(fila)+1){
@@ -177,7 +180,7 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result == 2){
-                eslegal[2] =true
+                eslegal[2] = true
                 
                 break;
             }else{
@@ -186,6 +189,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Vertical Abajo
     if(fila < 6){
         cont = 1
         while(cont < 8-columna){
@@ -194,7 +198,7 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result == 2){
-                eslegal[3] =true
+                eslegal[3] = true
                 
                 break;
             }else{
@@ -203,6 +207,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //diagonal arriba izq
     var cont = 1;
     if(columna >1 && fila >1){
         while(cont < Math.min(columna,fila)+1){
@@ -211,7 +216,7 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result == 2){
-                eslegal[4] =true
+                eslegal[4] = true
                 
                 break;
             }else{
@@ -220,15 +225,16 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Diag arriba der
     if(columna < 6 && fila >1){
         cont = 1
         while(cont < Math.min(Math.abs(columna-7),fila)+1){
-            result = verifica(matriz[parseInt(posi)-cont*7],cont,fichaenemiga);
+            result = verifica(matriz[posi-cont*7],cont,fichaenemiga);
             if (result == 1){
                 cont++;
                 continue;
-            }else if (result = 2){
-                eslegal[5] ==true
+            }else if (result == 2){
+                eslegal[5] = true
                 
                 break;
             }else{
@@ -237,6 +243,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Diag abajo izq
     var cont = 1;
     if(columna >1 && fila < 6){
         while(cont < Math.min(columna,Math.abs(fila-7))+1){
@@ -244,8 +251,8 @@ function verificarjugada(posi,matriz,turno){
             if (result == 1){
                 cont++;
                 continue;
-            }else if (result = 2){
-                eslegal[6] ==true
+            }else if (result == 2){
+                eslegal[6] =true
                 
                 break;
             }else{
@@ -254,6 +261,7 @@ function verificarjugada(posi,matriz,turno){
             
         }
     }
+    //Diag abajo der
     if(columna < 6 && fila <6){
         cont = 1
         while(cont <Math.min(Math.abs(columna-7),Math.abs(fila-7))+1){
@@ -262,7 +270,7 @@ function verificarjugada(posi,matriz,turno){
                 cont++;
                 continue;
             }else if (result == 2){
-                eslegal[7] =true
+                eslegal[7] = true
                 
                 break;
             }else{
