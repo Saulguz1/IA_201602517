@@ -24,11 +24,14 @@ function generar(turno,matriz){
     
     var matrizheuris = [120,-20,20,5,5,20,-20,120,-20,-40,-5,-5,-5,-5,-40,-20,20,-5,15,3,3,15,-5,20,5,-5,3,3,3,3,-5,5,5,-5,3,3,3,3,-5,5,20,-5,15,3,3,15,-5,20,-20,-40,-5,-5,-5,-5,-40,-20,120,-20,20,5,5,20,-20,120];
     var elije = 0;
-    var heuris = 0;
+    var heuris = matrizheuris[moves[0]];
     for(i = 0; i < moves.length; i++){
+        console.log(moves[i], matrizheuris[moves[i]])
         if (matrizheuris[moves[i]] > heuris)
         {
+            console.log("entro", heuris)
             heuris = matrizheuris[moves[i]];
+            console.log("entro", heuris)
             elije = i;
         }
         
